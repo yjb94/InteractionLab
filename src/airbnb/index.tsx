@@ -11,7 +11,6 @@ import {
 import React, { useState } from "react";
 import {
   Dimensions,
-  PixelRatio,
   Pressable,
   StatusBar,
   StyleSheet,
@@ -29,14 +28,19 @@ import Animated, {
   withTiming,
 } from "react-native-reanimated";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import Description from "./airbnb/Description";
-import Header from "./airbnb/Header";
-import SeeMore from "./airbnb/SeeMore";
+import Description from "./Description";
+import Header from "./Header";
+import SeeMore from "./SeeMore";
 
-const pd = PixelRatio.get();
+export const fonts = {
+  CerealBook: require("./assets/fonts/AirbnbCerealBook.ttf"),
+  CerealMedium: require("./assets/fonts/AirbnbCerealMedium.ttf"),
+  CerealLight: require("./assets/fonts/AirbnbCerealLight.ttf"),
+};
+
 const { width: windowWidth, height: windowHeight } = Dimensions.get("window");
 
-const Main = () => {
+const AirBnB = () => {
   const insets = useSafeAreaInsets();
 
   const viewRef = React.useRef(null);
@@ -205,4 +209,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export { Main };
+export default AirBnB;
