@@ -8,6 +8,11 @@ import {
   View,
 } from "react-native";
 import { Main } from "./src/Main";
+import LoadAssets from "./src/components/LoadAssets";
+
+import { fonts as airbnbFonts } from "./src/airbnb";
+import { SafeAreaProvider } from "react-native-safe-area-context";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 export default function App() {
   const [loaded, setLoaded] = useState(false);
@@ -33,10 +38,21 @@ export default function App() {
     );
   }
 
-  return <Main />;
+  return (
+    <LoadAssets fonts={{ ...airbnbFonts }}>
+      <GestureHandlerRootView style={styles.rootView}>
+        <SafeAreaProvider>
+          <Main />
+        </SafeAreaProvider>
+      </GestureHandlerRootView>
+    </LoadAssets>
+  );
 }
 
 const styles = StyleSheet.create({
+  rootView: {
+    flex: 1,
+  },
   container: {
     flex: 1,
     alignItems: "center",
