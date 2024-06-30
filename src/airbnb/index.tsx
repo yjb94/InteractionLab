@@ -27,10 +27,14 @@ import Animated, {
   useSharedValue,
   withTiming,
 } from "react-native-reanimated";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
 import Description from "./Description";
 import Header from "./Header";
 import SeeMore from "./SeeMore";
+import {
+  UnistylesRuntime,
+  createStyleSheet,
+  useStyles,
+} from "react-native-unistyles";
 
 export const fonts = {
   CerealBook: require("./assets/fonts/AirbnbCerealBook.ttf"),
@@ -41,7 +45,8 @@ export const fonts = {
 const { width: windowWidth, height: windowHeight } = Dimensions.get("window");
 
 const AirBnB = () => {
-  const insets = useSafeAreaInsets();
+  const { insets } = UnistylesRuntime;
+  const { styles } = useStyles(stylesheet);
 
   const viewRef = React.useRef(null);
 
@@ -190,7 +195,7 @@ const AirBnB = () => {
   );
 };
 
-const styles = StyleSheet.create({
+const stylesheet = createStyleSheet({
   container: {
     flex: 1,
   },

@@ -1,9 +1,11 @@
-import { View, Text, Image, StyleSheet, Dimensions } from "react-native";
 import React from "react";
+import { Dimensions, Image, View } from "react-native";
+import { createStyleSheet, useStyles } from "react-native-unistyles";
 
 const { width } = Dimensions.get("window");
 
 const Header = () => {
+  const { styles } = useStyles(stylesheet);
   return (
     <View>
       <Image
@@ -15,7 +17,7 @@ const Header = () => {
   );
 };
 
-const styles = StyleSheet.create({
+const stylesheet = createStyleSheet({
   container: {
     padding: 16,
     overflow: "hidden",

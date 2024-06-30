@@ -1,13 +1,7 @@
-import React from "react";
-import {
-  Dimensions,
-  Image,
-  Pressable,
-  StyleSheet,
-  Text,
-  View,
-} from "react-native";
 import { Entypo as Icon } from "@expo/vector-icons";
+import React from "react";
+import { Dimensions, Image, Pressable, Text, View } from "react-native";
+import { createStyleSheet, useStyles } from "react-native-unistyles";
 
 const { width } = Dimensions.get("window");
 
@@ -16,6 +10,8 @@ type DescriptionProps = {
 };
 
 const Description: React.FC<DescriptionProps> = ({ onSeeMore }) => {
+  const { styles } = useStyles(stylesheet);
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Tiny House</Text>
@@ -51,7 +47,7 @@ const Description: React.FC<DescriptionProps> = ({ onSeeMore }) => {
   );
 };
 
-const styles = StyleSheet.create({
+const stylesheet = createStyleSheet({
   container: {
     padding: 16,
     overflow: "hidden",

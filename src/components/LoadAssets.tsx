@@ -1,14 +1,9 @@
-import React, { ReactElement, useEffect, useState } from "react";
+import { LoadSkiaWeb } from "@shopify/react-native-skia/lib/module/web";
 import { Asset } from "expo-asset";
 import * as Font from "expo-font";
-import {
-  ActivityIndicator,
-  Platform,
-  StyleSheet,
-  Text,
-  View,
-} from "react-native";
-import { LoadSkiaWeb } from "@shopify/react-native-skia/lib/module/web";
+import React, { ReactElement, useEffect, useState } from "react";
+import { ActivityIndicator, Platform, Text, View } from "react-native";
+import { createStyleSheet, useStyles } from "react-native-unistyles";
 
 export type FontSource = Parameters<typeof Font.loadAsync>[0];
 const usePromiseAll = (promises: Promise<any>[], cb: () => void) =>
@@ -36,6 +31,8 @@ interface LoadAssetsProps {
 }
 
 export default ({ assets, fonts, children }: LoadAssetsProps) => {
+  const { styles } = useStyles(stylesheet);
+
   const assetsReady = useLoadAssets(assets || [], fonts || {});
   const [skiaWebLoaded, setSkiaWebLoaded] = useState(false);
 
@@ -62,7 +59,7 @@ export default ({ assets, fonts, children }: LoadAssetsProps) => {
   return children;
 };
 
-const styles = StyleSheet.create({
+const stylesheet = createStyleSheet({
   loadingContainer: {
     flex: 1,
     alignItems: "center",

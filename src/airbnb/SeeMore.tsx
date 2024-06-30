@@ -1,11 +1,12 @@
 import React from "react";
-import { Dimensions, StyleSheet, Text, View } from "react-native";
-
-const { width } = Dimensions.get("window");
+import { Text, View } from "react-native";
+import { createStyleSheet, useStyles } from "react-native-unistyles";
 
 type SeeMoreProps = {};
 
 const SeeMore: React.FC<SeeMoreProps> = ({}) => {
+  const { styles } = useStyles(stylesheet);
+
   const renderBulletItem = (title: string, information: string) => {
     return (
       <View style={styles.bulletItem}>
@@ -64,7 +65,7 @@ const SeeMore: React.FC<SeeMoreProps> = ({}) => {
   );
 };
 
-const styles = StyleSheet.create({
+const stylesheet = createStyleSheet({
   container: {},
   title: {
     fontSize: 18,
